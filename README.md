@@ -7,7 +7,11 @@ I'm hoping there's no trouble here. But depending on BIOS settings you might hav
 
 # Get on the 'net
 
-If you're wired (with DHCP services on your network) you should be good to go, thanks to some intelligent default behavior with the installation media.
+If you're wired (with DHCP services on your network) you should be good to go, thanks to some intelligent default behavior with the installation media. This can be confirmed with
+
+```
+root@archiso ~ # ip a
+```
 
 If you're using WiFi, things get a little tricky (but it isn't terrible).
 
@@ -34,3 +38,13 @@ Type the network passphrase for demo psk
 Passphrase:
 ```
 I entered the PSK (pre-shared key) passphrase, and after a moment the application responded with... nothing. That means it worked. If it didn't work, you would have seen `Operation failed`
+
+Once you're convinced that you're authenticated, you can exit `iwctl` and confirm that you're _on the 'net_ via `ip a`.
+
+## set-ntp
+
+The next step in the (https://wiki.archlinux.org/title/Installation_guide)[Installation Guide] is to enable ntp via `timedatectl set-ntp true`. This is super important for two reasons.
+1. Having accurate timestamps on files created during the installation process is important, but moreover
+2. This step allows the completion of the multi-user boot process and will ultimately result in an update to the archlinux mirror list.
+
+
